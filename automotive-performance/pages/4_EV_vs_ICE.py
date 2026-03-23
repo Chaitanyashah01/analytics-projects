@@ -82,7 +82,7 @@ try:
             barmode='group',
             title="Power & Speed by Powertrain"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.bar(
@@ -92,7 +92,7 @@ try:
             title="Acceleration Time by Powertrain",
             color='Powertrain'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -110,7 +110,7 @@ try:
             title="Horsepower Distribution"
         )
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.box(
@@ -121,7 +121,7 @@ try:
             title="Price Distribution"
         )
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     col1, col2 = st.columns(2)
 
@@ -134,7 +134,7 @@ try:
             title="Acceleration Distribution"
         )
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.box(
@@ -145,7 +145,7 @@ try:
             title="Torque Distribution"
         )
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -230,11 +230,11 @@ try:
         title="Brand Distribution by Powertrain"
     )
     fig.update_layout(height=500)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # Summary table
     st.markdown("### Summary Statistics")
-    st.dataframe(powertrain_stats.round(2), use_container_width=True)
+    st.dataframe(powertrain_stats.round(2), width="stretch")
 
 except Exception as e:
     st.error(f"Error: {str(e)}")

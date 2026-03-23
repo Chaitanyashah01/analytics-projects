@@ -58,7 +58,7 @@ try:
             desc_stats = DescriptiveStatistics.summary(df, selected_cols)
 
             st.markdown("### Summary Statistics")
-            st.dataframe(desc_stats, use_container_width=True)
+            st.dataframe(desc_stats, width="stretch")
 
             # Distribution plots
             st.markdown("### Distribution Analysis")
@@ -73,7 +73,7 @@ try:
                         marginal='box'
                     )
                     fig.update_layout(height=350)
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(fig, width="stretch")
 
             # Outlier detection
             st.markdown("### Outlier Detection")
@@ -107,7 +107,7 @@ try:
 
             # Box plot
             fig_box = px.box(df, y=outlier_col, title=f"Box Plot: {outlier_col}")
-            st.plotly_chart(fig_box, use_container_width=True)
+            st.plotly_chart(fig_box, width="stretch")
 
     with tab2:
         st.markdown("## Correlation Analysis")
@@ -126,7 +126,7 @@ try:
 
             with col1:
                 fig_heatmap = create_correlation_heatmap(df, corr_cols)
-                st.plotly_chart(fig_heatmap, use_container_width=True)
+                st.plotly_chart(fig_heatmap, width="stretch")
 
             with col2:
                 st.markdown("### Top Correlations")
@@ -146,7 +146,7 @@ try:
 
                 corr_df = pd.DataFrame(correlations)
                 corr_df = corr_df.sort_values('Correlation', key=abs, ascending=False)
-                st.dataframe(corr_df.head(10), use_container_width=True)
+                st.dataframe(corr_df.head(10), width="stretch")
 
             # Detailed correlation analysis
             st.markdown("### Pairwise Correlation Analysis")
@@ -170,7 +170,7 @@ try:
                         trendline='ols',
                         title=f"{var1} vs {var2}"
                     )
-                    st.plotly_chart(fig_scatter, use_container_width=True)
+                    st.plotly_chart(fig_scatter, width="stretch")
 
                 with col2:
                     # Statistical results
@@ -235,7 +235,7 @@ try:
                     # Box plot
                     fig_box = px.box(df, x=group_var, y=dependent_var,
                                     title=f"{dependent_var} by {group_var}")
-                    st.plotly_chart(fig_box, use_container_width=True)
+                    st.plotly_chart(fig_box, width="stretch")
 
         elif test_type == "T-Test":
             st.markdown("### Independent Samples T-Test")
@@ -309,7 +309,7 @@ try:
                     fig.add_trace(go.Scatter(x=theoretical, y=theoretical, mode='lines', name='Normal'))
                     fig.update_layout(title='Q-Q Plot', xaxis_title='Theoretical Quantiles',
                                      yaxis_title='Sample Quantiles')
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(fig, width="stretch")
 
         elif test_type == "Trend Analysis":
             st.markdown("### Time Series Trend Analysis")
@@ -345,7 +345,7 @@ try:
                     name='Trend Line',
                     line=dict(dash='dash', color='red')
                 ))
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, width="stretch")
 
     with tab4:
         st.markdown("## Data Quality Assessment")
@@ -370,7 +370,7 @@ try:
         # Column summary
         st.markdown("### Column Quality Summary")
         summary_df = quality_report.get_summary()
-        st.dataframe(summary_df, use_container_width=True)
+        st.dataframe(summary_df, width="stretch")
 
         # Missing values visualization
         st.markdown("### Missing Values Analysis")
@@ -389,7 +389,7 @@ try:
         if len(null_df) > 0:
             fig = px.bar(null_df, x='Column', y='Null %',
                         title="Missing Values by Column")
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
         else:
             st.success("No missing values in the dataset!")
 

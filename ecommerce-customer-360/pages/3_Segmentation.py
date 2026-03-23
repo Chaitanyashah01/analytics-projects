@@ -51,7 +51,7 @@ try:
             title="Customer Distribution by Segment",
             color_discrete_sequence=px.colors.qualitative.Set2
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.bar(
@@ -61,7 +61,7 @@ try:
             barmode='group',
             title="Spend Metrics by Segment"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -94,7 +94,7 @@ try:
         title="Segment Profile Comparison",
         height=400
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -121,7 +121,7 @@ try:
         yaxis_title="Loyalty Segment",
         height=400
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -139,7 +139,7 @@ try:
             title="Value Score Distribution by Segment"
         )
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.box(
@@ -150,7 +150,7 @@ try:
             title="Engagement Score by Segment"
         )
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -175,7 +175,7 @@ try:
         st.markdown("#### Segment Summary Table")
         display_df = df_segments.copy()
         display_df.columns = ['Segment', 'Customers', 'Avg Spend', 'Avg Purchases', 'Avg AOV', 'Avg Abandon']
-        st.dataframe(display_df.round(2), use_container_width=True)
+        st.dataframe(display_df.round(2), width="stretch")
 
     # Segment migration potential
     st.markdown("### Segment Characteristics")
@@ -191,7 +191,7 @@ try:
     segment_chars.columns = ['Segment', 'Avg Age', 'Avg Income', 'Loyalty Member %', 'Coupon Usage', 'Session Time']
     segment_chars['Loyalty Member %'] = segment_chars['Loyalty Member %'] * 100
 
-    st.dataframe(segment_chars.round(2), use_container_width=True)
+    st.dataframe(segment_chars.round(2), width="stretch")
 
 except Exception as e:
     st.error(f"Error: {str(e)}")

@@ -79,7 +79,7 @@ try:
             title="Price Distribution by Fuel Type",
             marginal='box'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.pie(
@@ -88,7 +88,7 @@ try:
             names='price_segment',
             title="Models by Price Segment"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -108,7 +108,7 @@ try:
             title="Price vs Horsepower",
             trendline='ols'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         reg = RegressionAnalysis.simple_linear_regression(df_filtered['price_usd'], df_filtered['horsepower_hp'])
         st.info(f"R² = {reg['r_squared']:.3f} | Per $10K increase: +{reg['slope']*10000:.1f} HP")
@@ -124,7 +124,7 @@ try:
             title="Price vs Performance Score",
             trendline='ols'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         reg = RegressionAnalysis.simple_linear_regression(df_filtered['price_usd'], df_filtered['performance_score'])
         st.info(f"R² = {reg['r_squared']:.3f} | Per $10K increase: +{reg['slope']*10000:.1f} points")
@@ -150,7 +150,7 @@ try:
             title="Best Value: Lowest $/HP"
         )
         fig.update_layout(yaxis={'categoryorder': 'total ascending'}, height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.box(
@@ -161,7 +161,7 @@ try:
             title="Price per HP by Segment"
         )
         fig.update_layout(showlegend=False, height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -182,9 +182,9 @@ try:
         barmode='group',
         title="Performance Metrics by Price Segment"
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
-    st.dataframe(df_seg_display.round(2), use_container_width=True)
+    st.dataframe(df_seg_display.round(2), width="stretch")
 
     # Bubble chart
     st.markdown("### Multi-Dimensional Analysis")
@@ -200,12 +200,12 @@ try:
         title="Price vs HP (bubble size = performance score)"
     )
     fig.update_layout(height=500)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # Statistics
     st.markdown("### Price Statistics")
     desc_stats = DescriptiveStatistics.summary(df_filtered, ['price_usd', 'price_per_hp', 'performance_score'])
-    st.dataframe(desc_stats, use_container_width=True)
+    st.dataframe(desc_stats, width="stretch")
 
     st.download_button(
         label="📥 Download Data",

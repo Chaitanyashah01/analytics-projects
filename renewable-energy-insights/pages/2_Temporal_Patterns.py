@@ -50,7 +50,7 @@ try:
             markers=True
         )
         fig.update_layout(xaxis_title="Hour", yaxis_title="Avg Production (MWh)")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         # Peak hours
@@ -67,7 +67,7 @@ try:
             color='avg_production',
             color_continuous_scale='Greens'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -95,7 +95,7 @@ try:
         yaxis_title="Day of Week",
         height=400
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -119,7 +119,7 @@ try:
             color='source' if selected_source == 'All' else None,
             title="Average Production by Day of Week"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         # Weekend vs Weekday
@@ -134,7 +134,7 @@ try:
             title="Weekday vs Weekend Avg Production",
             color='Day Type'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -152,7 +152,7 @@ try:
         title="Average Production by Time of Day",
         category_orders={'time_of_day': ['Morning', 'Afternoon', 'Evening', 'Night']}
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # Production variability by hour
     st.markdown("### Hourly Production Variability")
@@ -172,7 +172,7 @@ try:
         xaxis_title="Hour",
         yaxis_title="Production (MWh)"
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 except Exception as e:
     st.error(f"Error: {str(e)}")

@@ -77,7 +77,7 @@ try:
             title=f"Brands by {metric.replace('_', ' ').title()}"
         )
         fig.update_layout(height=500, showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         # Radar chart for multi-metric comparison
@@ -108,7 +108,7 @@ try:
                 title="Brand Performance Radar",
                 height=500
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
         else:
             st.info("Select 8 or fewer brands for radar chart")
 
@@ -128,7 +128,7 @@ try:
             title="Horsepower Distribution by Brand"
         )
         fig.update_layout(showlegend=False, xaxis_tickangle=45, height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.box(
@@ -139,7 +139,7 @@ try:
             title="Price Distribution by Brand"
         )
         fig.update_layout(showlegend=False, xaxis_tickangle=45, height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -183,7 +183,7 @@ try:
     ]
     df_display = df_display.round(2)
 
-    st.dataframe(df_display, use_container_width=True)
+    st.dataframe(df_display, width="stretch")
 
     st.download_button(
         label="📥 Download Comparison",

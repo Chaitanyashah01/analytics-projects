@@ -55,7 +55,7 @@ try:
             title="Total Production by Season",
             category_orders={'season': season_order}
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.bar(
@@ -67,7 +67,7 @@ try:
             title="Average Production by Season",
             category_orders={'season': season_order}
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -89,7 +89,7 @@ try:
         category_orders={'month_name': month_order}
     )
     fig.update_layout(xaxis_title="Month", yaxis_title="Total Production (MWh)")
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     col1, col2 = st.columns(2)
 
@@ -116,7 +116,7 @@ try:
         st.markdown("#### Seasonal Statistics")
         seasonal_stats = df_seasonal_sorted[['season', 'total_production', 'avg_production', 'readings']]
         seasonal_stats.columns = ['Season', 'Total (MWh)', 'Avg (MWh)', 'Readings']
-        st.dataframe(seasonal_stats.round(0), use_container_width=True)
+        st.dataframe(seasonal_stats.round(0), width="stretch")
 
     with col2:
         # Seasonal pie chart
@@ -131,7 +131,7 @@ try:
             names='season',
             title="Production Share by Season"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -165,7 +165,7 @@ try:
             category_orders={'season': season_order}
         )
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # Monthly box plots
     st.markdown("### Monthly Production Distribution")
@@ -179,7 +179,7 @@ try:
         category_orders={'month_name': month_order}
     )
     fig.update_layout(xaxis_tickangle=45)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # Download
     st.download_button(

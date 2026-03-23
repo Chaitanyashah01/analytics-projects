@@ -146,7 +146,7 @@ def main():
                 labels={'avg_price': 'Avg Price ($)', 'company': 'Brand', 'avg_horsepower': 'Avg HP'}
             )
             fig.update_layout(height=400)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
         with col2:
             st.markdown("### Models by Fuel Type")
@@ -160,7 +160,7 @@ def main():
                 color_discrete_sequence=px.colors.qualitative.Set2
             )
             fig.update_layout(height=400)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
         st.markdown("---")
 

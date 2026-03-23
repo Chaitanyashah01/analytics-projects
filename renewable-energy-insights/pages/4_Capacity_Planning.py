@@ -71,7 +71,7 @@ try:
             title="Production Distribution",
             marginal='box'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         # Percentile analysis
@@ -84,7 +84,7 @@ try:
         })
 
         st.markdown("#### Production Percentiles")
-        st.dataframe(perc_df.round(0), use_container_width=True)
+        st.dataframe(perc_df.round(0), width="stretch")
 
         st.info(f"""
         **Key Insights:**
@@ -104,7 +104,7 @@ try:
         st.markdown("#### Top Peak Events")
         st.dataframe(
             df_peaks[['date', 'start_hour', 'source', 'production', 'season']].head(10),
-            use_container_width=True
+            width="stretch"
         )
 
     with col2:
@@ -119,7 +119,7 @@ try:
             color='count',
             color_continuous_scale='Greens'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -148,7 +148,7 @@ try:
 
     with col1:
         st.markdown("#### Time Above Production Thresholds")
-        st.dataframe(reliability_df, use_container_width=True)
+        st.dataframe(reliability_df, width="stretch")
 
     with col2:
         fig = px.bar(
@@ -159,7 +159,7 @@ try:
             color='Hours Above',
             color_continuous_scale='Greens'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -184,7 +184,7 @@ try:
                 color='source' if selected_source == 'All' else None,
                 title="Daily Total Production"
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
         with col2:
             fig = px.line(
@@ -194,12 +194,12 @@ try:
                 color='source' if selected_source == 'All' else None,
                 title="Daily Coefficient of Variation"
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
     # Summary statistics
     st.markdown("### Statistical Summary")
     desc_stats = DescriptiveStatistics.summary(df, ['production'])
-    st.dataframe(desc_stats, use_container_width=True)
+    st.dataframe(desc_stats, width="stretch")
 
     st.download_button(
         label="📥 Download Capacity Data",

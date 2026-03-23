@@ -93,7 +93,7 @@ try:
             },
             trendline='ols'
         )
-        st.plotly_chart(fig_scatter, use_container_width=True)
+        st.plotly_chart(fig_scatter, width="stretch")
 
     with col2:
         # Regression analysis
@@ -149,7 +149,7 @@ try:
                 title="Distribution of Extra Fuel Costs",
                 labels={'extra_fuel_cost_usd': 'Extra Fuel Cost (USD)'}
             )
-            st.plotly_chart(fig_hist, use_container_width=True)
+            st.plotly_chart(fig_hist, width="stretch")
         else:
             st.info("No rerouted flights in current selection")
 
@@ -177,7 +177,7 @@ try:
                 text='Avg Fuel Cost'
             )
             fig_compare.update_traces(texttemplate='$%{text:,.0f}', textposition='outside')
-            st.plotly_chart(fig_compare, use_container_width=True)
+            st.plotly_chart(fig_compare, width="stretch")
 
     st.markdown("---")
 
@@ -209,7 +209,7 @@ try:
         title="Route Revenue by Airline (color = profit margin %)"
     )
     fig_airline.update_layout(height=400)
-    st.plotly_chart(fig_airline, use_container_width=True)
+    st.plotly_chart(fig_airline, width="stretch")
 
     st.markdown("---")
 
@@ -241,7 +241,7 @@ try:
             yaxis={'categoryorder': 'total ascending'},
             height=400
         )
-        st.plotly_chart(fig_top_routes, use_container_width=True)
+        st.plotly_chart(fig_top_routes, width="stretch")
 
     with col2:
         # Top routes by passengers
@@ -259,7 +259,7 @@ try:
             yaxis={'categoryorder': 'total ascending'},
             height=400
         )
-        st.plotly_chart(fig_top_pass, use_container_width=True)
+        st.plotly_chart(fig_top_pass, width="stretch")
 
     st.markdown("---")
 
@@ -292,7 +292,7 @@ try:
             'fuel_per_passenger': 'Fuel Cost per Passenger ($)'
         }
     )
-    st.plotly_chart(fig_aircraft, use_container_width=True)
+    st.plotly_chart(fig_aircraft, width="stretch")
 
     # Descriptive statistics
     st.markdown("### Descriptive Statistics")
@@ -300,7 +300,7 @@ try:
     desc_cols = ['original_distance_km', 'total_fuel_cost_usd', 'route_revenue_usd',
                  'estimated_passengers', 'fuel_pct_of_cost']
     desc_stats = DescriptiveStatistics.summary(df_routes, desc_cols)
-    st.dataframe(desc_stats, use_container_width=True)
+    st.dataframe(desc_stats, width="stretch")
 
     # Export
     st.markdown("---")

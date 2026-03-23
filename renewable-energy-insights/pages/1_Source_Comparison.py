@@ -68,7 +68,7 @@ try:
         yaxis_title="Production (MWh)",
         height=400
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -87,7 +87,7 @@ try:
             markers=True
         )
         fig.update_layout(xaxis_title="Hour of Day", yaxis_title="Avg Production (MWh)")
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         # Create heatmap data
@@ -99,7 +99,7 @@ try:
             barmode='group',
             title="Hourly Production Comparison"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -122,7 +122,7 @@ try:
             title="Production Distribution by Source"
         )
         fig.update_layout(showlegend=False)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         st.markdown("#### T-Test: Wind vs Solar")
@@ -153,7 +153,7 @@ try:
     variability['cv'] = (variability['std'] / variability['mean'] * 100).round(2)
     variability.columns = ['Source', 'Mean', 'Std Dev', 'Min', 'Max', 'CV (%)']
 
-    st.dataframe(variability.round(2), use_container_width=True)
+    st.dataframe(variability.round(2), width="stretch")
 
     # Histogram comparison
     fig = px.histogram(
@@ -165,7 +165,7 @@ try:
         opacity=0.7,
         title="Production Distribution Comparison"
     )
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 except Exception as e:
     st.error(f"Error: {str(e)}")

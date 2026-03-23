@@ -1,5 +1,6 @@
 """
 Database initialization for E-Commerce Customer 360.
+Supports loading from local file or URL.
 """
 
 import sqlite3
@@ -7,9 +8,43 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 import logging
+import streamlit as st
+import os
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+def load_data_from_source(data_dir: Path) -> pd.DataFrame:
+    """Load data from local file or URL."""
+    csv_path = data_dir / 'e_commerce_shopper_behaviour_and_lifestyle.csv'
+
+    # Try local file first
+    if csv_path.exists():
+        logger.info(f"Loading from local file: {csv_path}")
+        return pd.read_csv(csv_path)
+
+    # Try URL from secrets
+    try:
+        if hasattr(st, 'secrets') and 'DATA_URL' in st.secrets:
+            url = st.secrets['DATA_URL']
+            logger.info(f"Loading from URL...")
+            return pd.read_csv(url)
+    except Exception as e:
+        logger.warning(f"Could not load from secrets: {e}")
+
+    # Try environment variable
+    data_url = os.environ.get('DATA_URL')
+    if data_url:
+        logger.info("Loading from DATA_URL environment variable...")
+        return pd.read_csv(data_url)
+
+    raise FileNotFoundError(
+        "Data file not found. Either:\n"
+        "1. Place CSV in data/ folder, or\n"
+        "2. Set DATA_URL in Streamlit secrets, or\n"
+        "3. Set DATA_URL environment variable"
+    )
 
 
 def create_database(db_path: str, data_dir: str) -> dict:
@@ -24,11 +59,8 @@ def create_database(db_path: str, data_dir: str) -> dict:
     report = {'tables': {}, 'cleaning': {}}
 
     try:
-        csv_path = data_dir / 'e_commerce_shopper_behaviour_and_lifestyle.csv'
-        logger.info(f"Loading {csv_path}...")
-
-        # Read in chunks for large file
-        df = pd.read_csv(csv_path)
+        logger.info("Loading data...")
+        df = load_data_from_source(data_dir)
 
         report['cleaning']['original_rows'] = len(df)
 

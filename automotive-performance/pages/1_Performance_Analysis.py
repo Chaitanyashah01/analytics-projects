@@ -79,17 +79,17 @@ try:
     with col1:
         st.markdown("#### Most Powerful")
         top_hp = df_filtered.nlargest(5, 'horsepower_hp')[['company', 'car_name', 'horsepower_hp']]
-        st.dataframe(top_hp, use_container_width=True, hide_index=True)
+        st.dataframe(top_hp, width="stretch", hide_index=True)
 
     with col2:
         st.markdown("#### Fastest Top Speed")
         top_speed = df_filtered.nlargest(5, 'top_speed_kmh')[['company', 'car_name', 'top_speed_kmh']]
-        st.dataframe(top_speed, use_container_width=True, hide_index=True)
+        st.dataframe(top_speed, width="stretch", hide_index=True)
 
     with col3:
         st.markdown("#### Quickest Acceleration")
         top_accel = df_filtered.nsmallest(5, 'acceleration_sec')[['company', 'car_name', 'acceleration_sec']]
-        st.dataframe(top_accel, use_container_width=True, hide_index=True)
+        st.dataframe(top_accel, width="stretch", hide_index=True)
 
     st.markdown("---")
 
@@ -109,7 +109,7 @@ try:
             title="Horsepower vs Top Speed",
             trendline='ols'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         # Regression stats
         reg_result = RegressionAnalysis.simple_linear_regression(
@@ -129,7 +129,7 @@ try:
             title="Horsepower vs 0-100 km/h Time",
             trendline='ols'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         reg_result = RegressionAnalysis.simple_linear_regression(
             df_filtered['horsepower_hp'].dropna(),
@@ -153,7 +153,7 @@ try:
             title="Horsepower Distribution",
             marginal='box'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.histogram(
@@ -164,7 +164,7 @@ try:
             title="Acceleration Time Distribution",
             marginal='box'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # Correlation analysis
     st.markdown("### Correlation Analysis")
@@ -183,12 +183,12 @@ try:
         textfont={"size": 10}
     ))
     fig.update_layout(title="Performance Metrics Correlation Matrix", height=500)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # Descriptive statistics
     st.markdown("### Descriptive Statistics")
     desc_stats = DescriptiveStatistics.summary(df_filtered, corr_cols)
-    st.dataframe(desc_stats, use_container_width=True)
+    st.dataframe(desc_stats, width="stretch")
 
     st.download_button(
         label="📥 Download Data",

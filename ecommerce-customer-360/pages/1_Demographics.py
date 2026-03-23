@@ -67,7 +67,7 @@ try:
             barmode='overlay',
             opacity=0.7
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         gender_counts = df['gender'].value_counts().reset_index()
@@ -79,7 +79,7 @@ try:
             names='Gender',
             title="Gender Distribution"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -104,7 +104,7 @@ try:
             color_continuous_scale='Purples',
             title="Customers by Age Group"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.box(
@@ -114,7 +114,7 @@ try:
             color='gender',
             title="Monthly Spend by Age Group and Gender"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -131,7 +131,7 @@ try:
             title="Income Distribution",
             color='income_segment'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         income_seg = df['income_segment'].value_counts().reset_index()
@@ -143,7 +143,7 @@ try:
             names='Segment',
             title="Income Segments"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -165,7 +165,7 @@ try:
             color='monthly_spend',
             color_continuous_scale='Purples'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         edu_stats = df.groupby('education_level')['monthly_spend'].mean().reset_index()
@@ -180,7 +180,7 @@ try:
             color='monthly_spend',
             color_continuous_scale='Purples'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # Geographic distribution
     st.markdown("### Geographic Distribution")
@@ -201,7 +201,7 @@ try:
         title="Top 20 Countries by Customer Count"
     )
     fig.update_layout(xaxis_tickangle=45)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.download_button(
         label="📥 Download Demographics",

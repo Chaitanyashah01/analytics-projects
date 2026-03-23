@@ -118,7 +118,7 @@ try:
         legend=dict(title="Severity")
     )
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -140,7 +140,7 @@ try:
         'Flight Cancellations', 'Airspace Closures'
     ]
 
-    st.dataframe(df_display, use_container_width=True, height=400)
+    st.dataframe(df_display, width="stretch", height=400)
 
     st.markdown("---")
 
@@ -165,7 +165,7 @@ try:
             title="Average Impact by Event Type",
             labels={'value': 'Impact (%)', 'event_type': 'Event Type'}
         )
-        st.plotly_chart(fig_bar, use_container_width=True)
+        st.plotly_chart(fig_bar, width="stretch")
 
     with col2:
         # Events by severity
@@ -180,7 +180,7 @@ try:
             color='Severity',
             color_discrete_map=severity_colors
         )
-        st.plotly_chart(fig_pie, use_container_width=True)
+        st.plotly_chart(fig_pie, width="stretch")
 
     st.markdown("---")
 
@@ -219,7 +219,7 @@ try:
             df_filtered,
             ['oil_price_change_pct', 'airfare_impact_pct', 'flight_cancellations_est']
         )
-        st.dataframe(desc_stats, use_container_width=True)
+        st.dataframe(desc_stats, width="stretch")
 
     # Box plot by severity
     st.markdown("#### Impact Distribution by Severity")
@@ -233,7 +233,7 @@ try:
         title="Oil Price Impact Distribution by Severity"
     )
     fig_box.update_layout(showlegend=False, height=400)
-    st.plotly_chart(fig_box, use_container_width=True)
+    st.plotly_chart(fig_box, width="stretch")
 
     # Correlation between oil impact and airfare impact
     st.markdown("---")
@@ -250,7 +250,7 @@ try:
         color_discrete_map=severity_colors,
         trendline='ols'
     )
-    st.plotly_chart(fig_scatter, use_container_width=True)
+    st.plotly_chart(fig_scatter, width="stretch")
 
     # Export
     st.markdown("---")

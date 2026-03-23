@@ -120,7 +120,7 @@ def main():
                 color_discrete_sequence=['#3498db', '#f1c40f']
             )
             fig.update_layout(height=350)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
         with col2:
             st.markdown("### Average vs Peak Production")
@@ -132,7 +132,7 @@ def main():
                 color_discrete_sequence=['#27ae60', '#e74c3c']
             )
             fig.update_layout(height=350)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
 
         st.markdown("---")
 
@@ -149,7 +149,7 @@ def main():
             labels={'total_production': 'Production (MWh)', 'date': 'Date'}
         )
         fig.update_layout(height=400)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         # Insights
         st.markdown("### Key Insights")

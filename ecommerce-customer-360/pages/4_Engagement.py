@@ -52,7 +52,7 @@ try:
             title="Daily Session Time Distribution",
             color='device_type'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         device_stats = df.groupby('device_type').agg({
@@ -69,7 +69,7 @@ try:
             color_continuous_scale='Purples',
             title="Avg Session Time by Device"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -89,7 +89,7 @@ try:
             opacity=0.5,
             trendline='ols'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         reg = RegressionAnalysis.simple_linear_regression(
             df['daily_session_time_minutes'],
@@ -107,7 +107,7 @@ try:
             opacity=0.5,
             trendline='ols'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
         reg = RegressionAnalysis.simple_linear_regression(
             df['engagement_score'],
@@ -129,7 +129,7 @@ try:
             nbins=30,
             title="Daily Product Views Distribution"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.scatter(
@@ -140,7 +140,7 @@ try:
             title="Views vs Conversion Rate",
             opacity=0.5
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -156,7 +156,7 @@ try:
             nbins=10,
             title="App Usage Frequency Distribution"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         app_spend = df.groupby('app_usage_frequency')['monthly_spend'].mean().reset_index()
@@ -169,7 +169,7 @@ try:
             color='monthly_spend',
             color_continuous_scale='Purples'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -188,7 +188,7 @@ try:
             title="Ad Views vs Clicks",
             opacity=0.5
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         df['click_rate'] = df['ad_clicks_per_day'] / (df['ad_views_per_day'] + 0.01)
@@ -202,7 +202,7 @@ try:
             color='click_rate',
             color_continuous_scale='Purples'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # Engagement correlation matrix
     st.markdown("### Engagement Metrics Correlation")
@@ -222,7 +222,7 @@ try:
         texttemplate='%{text}'
     ))
     fig.update_layout(title="Engagement Metrics Correlation", height=500)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
 except Exception as e:
     st.error(f"Error: {str(e)}")

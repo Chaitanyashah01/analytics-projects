@@ -64,7 +64,7 @@ try:
             title="Monthly Spend Distribution",
             color='spend_segment'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         spend_seg = df['spend_segment'].value_counts().reset_index()
@@ -76,7 +76,7 @@ try:
             names='Segment',
             title="Spend Segments"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -94,7 +94,7 @@ try:
             title="Purchase Frequency vs Monthly Spend",
             opacity=0.6
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.histogram(
@@ -103,7 +103,7 @@ try:
             nbins=30,
             title="Weekly Purchase Frequency Distribution"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -122,7 +122,7 @@ try:
             title="Customers by Product Category"
         )
         fig.update_layout(xaxis_tickangle=45)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.bar(
@@ -134,7 +134,7 @@ try:
             title="Avg Order Value by Category"
         )
         fig.update_layout(xaxis_tickangle=45)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -150,7 +150,7 @@ try:
             nbins=30,
             title="Cart Abandonment Rate Distribution"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         # Abandonment by segment
@@ -164,7 +164,7 @@ try:
             color='cart_abandonment_rate',
             color_continuous_scale='RdYlGn_r'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -187,7 +187,7 @@ try:
             names='Payment Method',
             title="Payment Method Distribution"
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     with col2:
         fig = px.bar(
@@ -198,7 +198,7 @@ try:
             color='Avg AOV',
             color_continuous_scale='Purples'
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width="stretch")
 
     # Correlation analysis
     st.markdown("### Correlation Analysis")
@@ -217,12 +217,12 @@ try:
         texttemplate='%{text}'
     ))
     fig.update_layout(title="Purchase Behavior Correlations", height=400)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # Statistics
     st.markdown("### Descriptive Statistics")
     desc_stats = DescriptiveStatistics.summary(df, behavior_cols)
-    st.dataframe(desc_stats, use_container_width=True)
+    st.dataframe(desc_stats, width="stretch")
 
 except Exception as e:
     st.error(f"Error: {str(e)}")

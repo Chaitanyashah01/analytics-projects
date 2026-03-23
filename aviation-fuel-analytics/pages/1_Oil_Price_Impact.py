@@ -91,7 +91,7 @@ try:
     fig.update_yaxes(title_text="Price ($/barrel)", secondary_y=False)
     fig.update_yaxes(title_text="Profit Margin (%)", secondary_y=True)
 
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     st.markdown("---")
 
@@ -111,7 +111,7 @@ try:
                 available_cols,
                 title="Correlation Matrix"
             )
-            st.plotly_chart(fig_heatmap, use_container_width=True)
+            st.plotly_chart(fig_heatmap, width="stretch")
 
     with col2:
         # Correlation statistics
@@ -163,7 +163,7 @@ try:
             title="Oil Price Impact on Profitability",
             show_regression=True
         )
-        st.plotly_chart(fig_scatter, use_container_width=True)
+        st.plotly_chart(fig_scatter, width="stretch")
 
         # Regression statistics
         reg_result = RegressionAnalysis.simple_linear_regression(
@@ -193,7 +193,7 @@ try:
             title="Fuel Cost Impact on Profitability",
             show_regression=True
         )
-        st.plotly_chart(fig_scatter2, use_container_width=True)
+        st.plotly_chart(fig_scatter2, width="stretch")
 
         # Regression statistics
         reg_result2 = RegressionAnalysis.simple_linear_regression(
@@ -227,7 +227,7 @@ try:
                            'Std Profit Margin', 'Avg Fuel Cost %', 'Std Fuel Cost %']
     phase_stats = phase_stats.reset_index()
 
-    st.dataframe(phase_stats, use_container_width=True)
+    st.dataframe(phase_stats, width="stretch")
 
     # Box plot comparison
     fig_box = px.box(
@@ -238,7 +238,7 @@ try:
         title="Profit Margin Distribution by Conflict Phase"
     )
     fig_box.update_layout(showlegend=False, height=400)
-    st.plotly_chart(fig_box, use_container_width=True)
+    st.plotly_chart(fig_box, width="stretch")
 
     # Descriptive statistics
     st.markdown("### Descriptive Statistics")
@@ -247,7 +247,7 @@ try:
         df_corr,
         ['brent_crude', 'jet_fuel', 'profit_margin', 'fuel_cost_pct', 'total_revenue']
     )
-    st.dataframe(desc_stats, use_container_width=True)
+    st.dataframe(desc_stats, width="stretch")
 
     # Export option
     st.markdown("---")

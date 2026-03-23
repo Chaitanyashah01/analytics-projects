@@ -97,7 +97,7 @@ try:
             labels={'total_revenue': 'Total Revenue ($M)', 'airline': 'Airline'}
         )
         fig_revenue.update_layout(yaxis={'categoryorder': 'total ascending'}, height=400)
-        st.plotly_chart(fig_revenue, use_container_width=True)
+        st.plotly_chart(fig_revenue, width="stretch")
 
     with col2:
         # Top by profit margin
@@ -113,7 +113,7 @@ try:
             labels={'avg_profit_margin': 'Avg Profit Margin (%)', 'airline': 'Airline'}
         )
         fig_margin.update_layout(yaxis={'categoryorder': 'total ascending'}, height=400)
-        st.plotly_chart(fig_margin, use_container_width=True)
+        st.plotly_chart(fig_margin, width="stretch")
 
     st.markdown("---")
 
@@ -134,7 +134,7 @@ try:
         }
     )
     fig_scatter.update_layout(height=500)
-    st.plotly_chart(fig_scatter, use_container_width=True)
+    st.plotly_chart(fig_scatter, width="stretch")
 
     st.markdown("---")
 
@@ -162,7 +162,7 @@ try:
             color_continuous_scale='RdYlGn',
             title="Revenue by Region (color = profit margin)"
         )
-        st.plotly_chart(fig_region, use_container_width=True)
+        st.plotly_chart(fig_region, width="stretch")
 
     with col2:
         # Box plot by region
@@ -174,7 +174,7 @@ try:
             title="Profit Margin Distribution by Region"
         )
         fig_box.update_layout(showlegend=False, height=400)
-        st.plotly_chart(fig_box, use_container_width=True)
+        st.plotly_chart(fig_box, width="stretch")
 
     st.markdown("---")
 
@@ -198,7 +198,7 @@ try:
             title="Performance Metrics by Airline Type",
             labels={'value': 'Percentage', 'airline_type': 'Airline Type'}
         )
-        st.plotly_chart(fig_type, use_container_width=True)
+        st.plotly_chart(fig_type, width="stretch")
 
     with col2:
         # ANOVA test for airline types
@@ -241,7 +241,7 @@ try:
             title="Hedging Strategy vs Profitability",
             trendline='ols'
         )
-        st.plotly_chart(fig_hedge, use_container_width=True)
+        st.plotly_chart(fig_hedge, width="stretch")
 
     with col2:
         # Correlation analysis
@@ -279,7 +279,7 @@ try:
         'Total Hedge Savings', 'Quarters Reported'
     ]
 
-    st.dataframe(df_display, use_container_width=True, height=400)
+    st.dataframe(df_display, width="stretch", height=400)
 
     # Descriptive statistics
     st.markdown("### Descriptive Statistics")
@@ -287,7 +287,7 @@ try:
     desc_cols = ['avg_quarterly_revenue', 'avg_profit_margin', 'avg_fuel_cost_pct',
                  'avg_hedging_pct', 'total_passengers']
     desc_stats = DescriptiveStatistics.summary(df_filtered, desc_cols)
-    st.dataframe(desc_stats, use_container_width=True)
+    st.dataframe(desc_stats, width="stretch")
 
     # Export
     st.markdown("---")

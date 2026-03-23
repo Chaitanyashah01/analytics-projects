@@ -153,7 +153,16 @@ def create_database(db_path: str, data_dir: str) -> dict:
         # Load CSV
         csv_path = data_dir / 'Cars Datasets 2025.csv'
         logger.info(f"Loading {csv_path}...")
-        df = pd.read_csv(csv_path)
+        # Try different encodings to handle special characters
+        for encoding in ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']:
+            try:
+                df = pd.read_csv(csv_path, encoding=encoding)
+                logger.info(f"Successfully loaded with {encoding} encoding")
+                break
+            except UnicodeDecodeError:
+                continue
+        else:
+            raise ValueError("Could not decode CSV with any supported encoding")
 
         report['cleaning']['original_rows'] = len(df)
 

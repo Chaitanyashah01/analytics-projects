@@ -44,8 +44,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
+def get_db_path():
+    """Get database path - use temp dir for Streamlit Cloud."""
+    import tempfile
+    import os
+    if os.path.exists('/mount/src'):
+        return Path(tempfile.gettempdir()) / "ecommerce.db"
+    return Path(__file__).parent / "data" / "ecommerce.db"
+
+
 def initialize_database():
-    db_path = Path(__file__).parent / "data" / "ecommerce.db"
+    db_path = get_db_path()
     data_dir = Path(__file__).parent / "data"
 
     if not db_path.exists():

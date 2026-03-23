@@ -10,7 +10,12 @@ import streamlit as st
 
 
 def get_db_path() -> str:
-    """Get the database path."""
+    """Get the database path - use temp dir for Streamlit Cloud."""
+    import tempfile
+    import os
+    # Check if running on Streamlit Cloud (read-only filesystem)
+    if os.path.exists('/mount/src'):
+        return str(Path(tempfile.gettempdir()) / "automotive.db")
     return str(Path(__file__).parent.parent / "data" / "automotive.db")
 
 

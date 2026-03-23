@@ -2,14 +2,20 @@
 
 A collection of four comprehensive business analytics dashboards demonstrating advanced data analysis, statistical modeling, and interactive visualization capabilities.
 
+## Live Demos
+
+[![Aviation Fuel Analytics](https://img.shields.io/badge/Aviation_Fuel_Analytics-Live_Demo-1f77b4?style=for-the-badge&logo=streamlit)](https://aviation-fuel-analytics.streamlit.app/)
+[![Automotive Performance](https://img.shields.io/badge/Automotive_Performance-Live_Demo-e74c3c?style=for-the-badge&logo=streamlit)](https://automotive-performance.streamlit.app/)
+[![Renewable Energy](https://img.shields.io/badge/Renewable_Energy-Live_Demo-27ae60?style=for-the-badge&logo=streamlit)](https://renewable-energy-insights.streamlit.app/)
+
 ## Projects
 
-| Project | Domain | Key Analytics |
-|---------|--------|---------------|
-| [Aviation Fuel Analytics](./aviation-fuel-analytics/) | Transportation & Energy | Time series analysis, correlation studies, event impact analysis |
-| [Automotive Performance](./automotive-performance/) | Automotive | Regression analysis, market segmentation, performance benchmarking |
-| [Renewable Energy Insights](./renewable-energy-insights/) | Energy & Sustainability | Seasonal decomposition, production forecasting, capacity optimization |
-| [E-Commerce Customer 360](./ecommerce-customer-360/) | Retail & Marketing | Customer segmentation, behavioral clustering, conversion analytics |
+| Project | Domain | Key Analytics | Demo |
+|---------|--------|---------------|------|
+| [Aviation Fuel Analytics](./aviation-fuel-analytics/) | Transportation & Energy | Time series analysis, correlation studies, event impact analysis | [Launch App](https://aviation-fuel-analytics.streamlit.app/) |
+| [Automotive Performance](./automotive-performance/) | Automotive | Regression analysis, market segmentation, performance benchmarking | [Launch App](https://automotive-performance.streamlit.app/) |
+| [Renewable Energy Insights](./renewable-energy-insights/) | Energy & Sustainability | Seasonal decomposition, production forecasting, capacity optimization | [Launch App](https://renewable-energy-insights.streamlit.app/) |
+| [E-Commerce Customer 360](./ecommerce-customer-360/) | Retail & Marketing | Customer segmentation, behavioral clustering, conversion analytics | Coming Soon |
 
 ## Technical Stack
 
@@ -97,6 +103,16 @@ analytics-projects/
 ```
 
 ## Deployment
+
+### Live Deployments
+
+| Dashboard | URL |
+|-----------|-----|
+| Aviation Fuel Analytics | https://aviation-fuel-analytics.streamlit.app/ |
+| Automotive Performance | https://automotive-performance.streamlit.app/ |
+| Renewable Energy Insights | https://renewable-energy-insights.streamlit.app/ |
+
+### Deploy Your Own
 
 Each project is configured for Streamlit Cloud deployment:
 
